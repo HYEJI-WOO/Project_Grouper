@@ -19,3 +19,40 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-sm navbar-dark justify-content-between" style="background-color: LightGreen">
+   <a href="${contextPath}/product/list"><img src="${contextPath}/resources/images/LOGO.png" alt="LOGO" width="150" /></a>
+	
+   <ul class="nav nav-pills">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">모집중</a>
+	    <div class="dropdown-menu">
+	      <a class="dropdown-item" href="#">온라인</a>
+	      <a class="dropdown-item" href="#">오프라인</a>
+	    </div>
+  	</li>
+	<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">진행중</a>
+	    <div class="dropdown-menu">
+	      <a class="dropdown-item" href="#">온라인</a>
+	      <a class="dropdown-item" href="#">오프라인</a>
+	    </div>
+  	</li>	    
+  </ul>
+  
+  <!-- 로그인,로그아웃,회원가입 -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+    <sec:authorize access="isAnonymous()">
+      <a class="nav-link" style="color: black; display: inline-block" href="${contextPath}/member/join">회원가입</a>
+      <a class="nav-link" style="color: black; display: inline-block" href="${contextPath}/member/login">로그인</a>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()"><!-- 권한이 있는 경우  -->
+		<p>로그인 중 : <sec:authentication property="principal.username"/></p> <!-- 로그인 id-->
+		<form action="${contextPath}/member/logout" method="post"> <!-- 기본값 : /logout -->
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<button class="btn btn-primary">로그아웃</button>
+		</form> 
+	</sec:authorize>
+    </li>
+  </ul>
+</nav>

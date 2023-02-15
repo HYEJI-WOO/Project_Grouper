@@ -3,18 +3,8 @@
 <%@ include file="layout/header.jsp" %>
 
 <div class="container">
-	<h1>메인</h1>
-	<sec:authorize access="isAnonymous()"><!-- 권한이 없는 경우  -->
-		<a href="${contextPath}/member/join">회원가입</a><br>
-		<a href="${contextPath}/member/login">로그인</a><br>
-	</sec:authorize>
-	<sec:authorize access="isAuthenticated()"><!-- 권한이 있는 경우  -->
-		<p>로그인 중 : <sec:authentication property="principal.username"/></p> <!-- 로그인 id-->
-		<form action="${contextPath}/member/logout" method="post"> <!-- 기본값 : /logout -->
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<button class="btn btn-primary">로그아웃</button>
-		</form> 
-	</sec:authorize>
+	<h1>전체</h1>
+	
 </div>
 
 <%@ include file="layout/footer.jsp" %>
