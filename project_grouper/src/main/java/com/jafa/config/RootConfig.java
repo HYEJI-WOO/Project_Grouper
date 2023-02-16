@@ -48,6 +48,7 @@ public class RootConfig {
 		return factory;
 	}
 	
+	@Bean
 	public SqlSessionTemplate sqlSessionTemplate() throws Exception {
 		return new SqlSessionTemplate(sqlSessionFactory().getObject());
 	}
