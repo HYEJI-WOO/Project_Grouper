@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jafa.repository.MemberRepository">
+	<insert id="save">
+		insert into gp_member(mno, memberId, password, email, phone, birth, address, gender)
+		values(gp_member_seq.nextval,#{memberId}, #{password}, #{email}, #{phone}, #{birth}, #{address}, #{gender})
+	</insert>
+	<select id="memberList" resultMap="memberMap">
+		select * from gp_member
+	</select>
+	
+	<!-- 회원로그인정보 -->
+	<select id="read" resultMap="memberMap">
+		SELECT * FROM gp_member WHERE memberId = #{memberId}
+	</select>
+	<resultMap type="com.jafa.domain.MemberVO" id="memberMap">
+		<result property="mno" column="mno"/>
+		<result property="memberId" column="memberId"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="birth" column="birth"/>
+		<result property="address" column="address"/>
+		<result property="gender" column="gender"/>
+		<result property="enabled" column="enabled"/>
+		<collection property="authList" 
+			column="memberId" 
+			javaType="java.util.ArrayList" 
+			ofType="com.jafa.domain.AuthVO"
+			select="getAuthList"/>
+	</resultMap>
+	<select id="getAuthList" resultType="com.jafa.domain.AuthVO">
+		select * from gp_member_auth where memberId=#{memberId} order by ordinal
+	</select>
+</mapper>

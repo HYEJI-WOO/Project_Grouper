@@ -29,7 +29,7 @@ public class RootConfig {
 	@Value("${db.password}")
 	private String password;
 	
-	@Bean
+	@Bean(destroyMethod = "close")
 	public DataSource dataSource() {
 		DataSource dataSource = new DataSource();
 		dataSource.setDriverClassName(driverClass);
