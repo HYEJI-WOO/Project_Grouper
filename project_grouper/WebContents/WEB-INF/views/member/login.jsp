@@ -9,7 +9,7 @@
 	<form action="${contextPath}/member/login" method="post">
 		<div class="form-group">
 			<label>아이디 : </label>
-			<input type="text" name="loginId" class="form-control" value="${loginId }">
+			<input type="text" name="loginId" class="form-control" value="${loginId}">
 		</div>
 		<div class="form-group">
 			<label>비밀번호 : </label>

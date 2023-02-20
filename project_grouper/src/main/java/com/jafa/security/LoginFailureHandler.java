@@ -34,9 +34,9 @@ public class LoginFailureHandler implements AuthenticationFailureHandler  {
 		String loginId = request.getParameter("loginId");
 		
 		if(exception instanceof BadCredentialsException) {
-			errorMessage = "아이디 또는 비밀번호가 일치하지 않음";
+			errorMessage = "아이디 또는 비밀번호가 일치하지 않습니다.";
 		}else if(exception instanceof InternalAuthenticationServiceException) {
-			errorMessage = "아이디 또는 비밀번호가 일치하지 않음";
+			errorMessage = "아이디 또는 비밀번호가 일치하지 않습니다.";
         } else if(exception instanceof DisabledException) {
         	errorMessage = "계정이 비활성화되었습니다. 관리자에게 문의하세요.";
         } else if(exception instanceof CredentialsExpiredException) {

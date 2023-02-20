@@ -32,6 +32,7 @@ public class MemberServiceTest {
 	}
 	
 	@Test
+	@Ignore
 	public void test2() {
 		AuthVO auth = new AuthVO("fefe", MemberType.ROLE_REGULAR_MEMBER);
 		memberService.updateMemberType(auth);

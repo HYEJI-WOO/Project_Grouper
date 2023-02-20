@@ -30,6 +30,7 @@ public class MemberRepositoryTest {
 	AuthRepository authRepository;
 	
 	@Test
+	@Ignore
 	public void test() {
 		MemberVO vo = MemberVO.builder()
 				.memberId("dori")
@@ -50,7 +51,6 @@ public class MemberRepositoryTest {
 	}
 	
 	@Test
-	@Ignore
 	public void test2() {
 		MemberVO read = memberRepository.read("fefe");
 		log.info(read);

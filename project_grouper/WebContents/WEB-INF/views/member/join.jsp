@@ -26,7 +26,7 @@
 		</div>
 		<h5>휴대전화</h5>
 		<div class="form-group">
-			<input type="text" name="phoneNumber" class="form-control" placeholder="휴대전화">
+			<input type="text" name="phone" class="form-control" placeholder="휴대전화">
 		</div>
 		<h5>생년월일</h5>
 		<div class="form-group">
