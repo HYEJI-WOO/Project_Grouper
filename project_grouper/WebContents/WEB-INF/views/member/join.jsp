@@ -20,6 +20,10 @@
 		<div class="form-group">
 			<input type="password" name="pwdCheck" class="form-control" placeholder="비밀번호 확인">
 		</div>
+		<h5>이름</h5>
+		<div class="form-group">
+			<input type="text" name="name" class="form-control" placeholder="이름">
+		</div>
 		<h5>이메일</h5>
 		<div class="form-group">
 			<input type="text" name="email" class="form-control" placeholder="이메일">

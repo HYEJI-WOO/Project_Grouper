@@ -5,8 +5,8 @@
   
 <mapper namespace="com.jafa.repository.MemberRepository">
 	<insert id="save">
-		insert into gp_member(mno, memberId, password, email, phone, birth, address, gender)
-		values(gp_member_seq.nextval, #{memberId}, #{password}, #{email}, #{phone}, #{birth}, #{address}, #{gender})
+		insert into gp_member(mno, memberId, password, name, email, phone, birth, address, gender)
+		values(gp_member_seq.nextval, #{memberId}, #{password}, #{name}, #{email}, #{phone}, #{birth}, #{address}, #{gender})
 	</insert>
 	<select id="memberList" resultMap="memberMap">
 		select * from gp_member
@@ -20,6 +20,7 @@
 		<result property="mno" column="mno"/>
 		<result property="memberId" column="memberId"/>
 		<result property="password" column="password"/>
+		<result property="name" column="name"/>
 		<result property="email" column="email"/>
 		<result property="phone" column="phone"/>
 		<result property="birth" column="birth"/>

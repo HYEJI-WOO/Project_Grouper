@@ -30,11 +30,11 @@ public class MemberRepositoryTest {
 	AuthRepository authRepository;
 	
 	@Test
-	@Ignore
 	public void test() {
 		MemberVO vo = MemberVO.builder()
 				.memberId("dori")
 				.password("1234")
+				.name("도리")
 				.email("fefe@naver.com")
 				.phone("01012341234")
 				.birth(19510414)
@@ -51,6 +51,7 @@ public class MemberRepositoryTest {
 	}
 	
 	@Test
+	@Ignore
 	public void test2() {
 		MemberVO read = memberRepository.read("fefe");
 		log.info(read);

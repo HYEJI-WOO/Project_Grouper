@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -48,6 +49,7 @@
     </sec:authorize>
     <sec:authorize access="isAuthenticated()"><!-- 권한이 있는 경우  -->
 		<p>로그인 중 : <sec:authentication property="principal.username"/></p> <!-- 로그인 id-->
+		<a href="${contextPath}/member/myPage">나의정보보기</a>
 		<form action="${contextPath}/member/logout" method="post"> <!-- 기본값 : /logout -->
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<button class="btn btn-primary">로그아웃</button>

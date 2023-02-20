@@ -5,6 +5,7 @@
 <div class="container">
 	<div class="jumbotron">
 		<h1>멤버</h1>
+		${memberInfo.memberId}
 	</div>
 
 </div>

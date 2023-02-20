@@ -24,7 +24,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 @RequestMapping("/member")
-public class SecurityExamController {
+public class MemberController {
 	
 	@Autowired
 	MemberService memberService; 
@@ -76,7 +76,7 @@ public class SecurityExamController {
 	}
 	
 	//회원가입처리
-	@PostMapping("/join")
+	@PostMapping(value = "/join")
 	public String join(MemberVO vo, RedirectAttributes rttr) {
 		memberService.join(vo);
 		return "redirect:/";
