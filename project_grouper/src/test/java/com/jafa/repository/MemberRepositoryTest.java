@@ -32,7 +32,7 @@ public class MemberRepositoryTest {
 	@Test
 	public void test() {
 		MemberVO vo = MemberVO.builder()
-				.memberId("fefe")
+				.memberId("dori")
 				.password("1234")
 				.email("fefe@naver.com")
 				.phone("01012341234")
