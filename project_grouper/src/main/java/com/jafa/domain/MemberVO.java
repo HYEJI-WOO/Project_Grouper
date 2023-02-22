@@ -23,9 +23,10 @@ public class MemberVO {
 	private String name;
 	private String email;
 	private String phone;
-	private int birth;
+	private int year;
+	private int month;
+	private int day;
 	private String address;
 	private String gender;
-	private boolean enabled;
 	private List<AuthVO> authList;
 }

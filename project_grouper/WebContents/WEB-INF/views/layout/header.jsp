@@ -48,8 +48,15 @@
       <a class="nav-link" style="color: black; display: inline-block" href="${contextPath}/member/login">로그인</a>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()"><!-- 권한이 있는 경우  -->
-		<p>로그인 중 : <sec:authentication property="principal.username"/></p> <!-- 로그인 id-->
-		<a href="${contextPath}/member/myPage">나의정보보기</a>
+		<p>★<sec:authentication property="principal.username"/>님★</p> <!-- 로그인 id-->
+		
+		<sec:authorize access="hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')">
+			<a href="${contextPath}/member/myPage">나의정보보기</a><br>
+		</sec:authorize>
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
+			<a href="${contextPath}/member/admin">관리자페이지</a><br>
+		</sec:authorize>		
+		
 		<form action="${contextPath}/member/logout" method="post"> <!-- 기본값 : /logout -->
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<button class="btn btn-primary">로그아웃</button>

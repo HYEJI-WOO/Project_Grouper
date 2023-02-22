@@ -13,7 +13,7 @@
 		</div>
 		<div class="form-group">
 			<label>비밀번호 : </label>
-			<input type="text" name="loginPwd" class="form-control">
+			<input type="password" name="loginPwd" class="form-control">
 		</div>
 		
 		<!-- 로그인 실패시 보일 메세지  -->

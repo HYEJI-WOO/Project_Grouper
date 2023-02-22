@@ -5,7 +5,12 @@
 <div class="container">
 	<div class="jumbotron">
 		<h1>멤버</h1>
-		${memberInfo.memberId}
+		${memberInfo.memberId}<br>
+		${memberInfo.name}<br>
+		${memberInfo.email}<br>
+		${memberInfo.phone}<br>
+		${memberInfo.address}<br>
+		${memberInfo.gender}<br>
 	</div>
 
 </div>

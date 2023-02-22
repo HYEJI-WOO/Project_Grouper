@@ -35,10 +35,12 @@ public class MemberRepositoryTest {
 				.memberId("dori")
 				.password("1234")
 				.name("도리")
-				.email("fefe@naver.com")
+				.email("dori@naver.com")
 				.phone("01012341234")
-				.birth(19510414)
-				.address("페페나라")
+				.year(1971)
+				.month(12)
+				.day(14)
+				.address("서울")
 				.gender("남자")
 				.build();
 		memberRepository.save(vo);
