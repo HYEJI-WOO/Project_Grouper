@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jafa.repository.BoardRepository">
+	<insert id="save">
+		INSERT INTO gp_board(bno, groupName, category, location, offlineLocation, capacity, startDate, details, author, isStarted) 
+		VALUES (#{gp_board_seq.nextval}, #{groupName}, #{category}, #{location}, #{offlineLocation}, #{capacity}, #{startDate}, #{details}, #{author}, #{isStarted})
+	</insert>  
+	
+	<select id="boardList" resultMap="boardMap">
+		select * from gp_board
+	</select>	
+	
+	<resultMap type="com.jafa.domain.BoardVO" id="boardMap">
+		<result property="bno" column="bno"/>
+		<result property="groupName" column="groupName"/>
+		<result property="category" column="category"/>
+		<result property="location" column="location"/>
+		<result property="offlineLocation" column="offlineLocation"/>
+		<result property="capacity" column="capacity"/>
+		<result property="startDate" column="startDate"/>
+		<result property="details" column="details"/>
+		<result property="author" column="author"/>
+		<result property="isStarted" column="isStarted"/>
+	</resultMap>
+</mapper>

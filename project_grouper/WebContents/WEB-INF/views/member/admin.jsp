@@ -15,7 +15,6 @@
 			<th>아이디</th>
 			<th>이메일</th>
 			<th>회원등급</th>
-			<th>상태</th>
 		</tr>
 			<c:forEach items="${list}" var="m" varStatus="mst">
 			<c:if test="${m.authList[0].memberType != mType[0]}"> <!-- ADMIN등급을 표시하지 않음 -->
@@ -32,7 +31,6 @@
 					</c:forEach>
 					</select>
 				</td>
-			<td>${m.enabled ? '활성':'비활성' }</td>
 		</tr>
 		</c:if>
 		</c:forEach>

@@ -54,48 +54,44 @@
             <input type="text" name="phone" class="form-control col-md-6" placeholder="휴대전화">
         </div>
 	
-<div class="form-group">
-    <h4>생년월일</h4>
-    <div style="margin-top: 10px;">
-        <select class="form-control" id="year" name="year" style="display: inline-block; width:150px; height:40px;font-size:16px;" required>
-            <option value="">년</option>
-            <c:forEach var="year" begin="1920" end="2023">
-                <option value="${year}">${year}</option>
-            </c:forEach>             
-        </select>
-        <select class="form-control" id="month" name="month" style="display: inline-block; width:120px; height:40px;font-size:16px;" required>
-            <option value="">월</option>
-            <c:forEach var="month" begin="1" end="12">
-                <c:choose>
-                    <c:when test="${month lt 10 }">
-                        <option value="0${month}">0${month}</option>
-                    </c:when>
-                    <c:otherwise>
-                        <option value="${month}">${month}</option>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>    
-        </select>
-        <select class="form-control" id="day" name="day" style="display: inline-block; width:120px; height:40px;font-size:16px;" required>
-            <option value="">일</option>
-            <c:forEach var="day" begin="1" end="31">
-                <c:choose>
-                    <c:when test="${day lt 10 }">
-                        <option value="0${day}">0${day}</option>
-                    </c:when>
-                    <c:otherwise>
-                        <option value="${day}">${day}</option>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>    
-        </select>
-    </div>
-</div>
+		<div class="form-group">
+		    <h4>생년월일</h4>
+		    <div style="margin-top: 10px;">
+		        <select class="form-control" id="year" name="year" style="display: inline-block; width:150px; height:40px;font-size:16px;" required>
+		            <option value="">년</option>
+		            <c:forEach var="year" begin="1920" end="2023">
+		                <option value="${year}">${year}</option>
+		            </c:forEach>             
+		        </select>
+		        <select class="form-control" id="month" name="month" style="display: inline-block; width:120px; height:40px;font-size:16px;" required>
+		            <option value="">월</option>
+		            <c:forEach var="month" begin="1" end="12">
+		                <c:choose>
+		                    <c:when test="${month lt 10 }">
+		                        <option value="0${month}">0${month}</option>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <option value="${month}">${month}</option>
+		                    </c:otherwise>
+		                </c:choose>
+		            </c:forEach>    
+		        </select>
+		        <select class="form-control" id="day" name="day" style="display: inline-block; width:120px; height:40px;font-size:16px;" required>
+		            <option value="">일</option>
+		            <c:forEach var="day" begin="1" end="31">
+		                <c:choose>
+		                    <c:when test="${day lt 10 }">
+		                        <option value="0${day}">0${day}</option>
+		                    </c:when>
+		                    <c:otherwise>
+		                        <option value="${day}">${day}</option>
+		                    </c:otherwise>
+		                </c:choose>
+		            </c:forEach>    
+		        </select>
+		    </div>
+		</div>
 
-
-
-
-		
 		<h5>거주지역</h5>
 		<div class="form-group">
 		  <select name="address" class="form-control col-md-6">
@@ -118,6 +114,7 @@
 		    <option value="제주">제주</option>
 		  </select>
 		</div>
+		
 		<h5>성별</h5>
 		<div class="form-group">
 		  <div class="form-check">
@@ -133,7 +130,6 @@
 		    </label>
 		  </div>
 		</div>
-
 		
 		<button class="btn btn-primary">회원가입</button>
 	</form>
