@@ -34,11 +34,6 @@ import lombok.extern.log4j.Log4j;
 //securedEnabled : @Secured 어노테이션 활성화 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-//	@Bean
-//	public AccessDeniedHandler accessDeniedHandler() {
-//		return new MemberAccessDeniedHandler();
-//	}
-	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -71,12 +66,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http.authorizeRequests()
-//		.antMatchers("/member/all").access("permitAll")
-//		.antMatchers("/member/myPage")
-//			.access("hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')")
-//		.antMatchers("/member/admin")
-//			.access("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')");
         
 		CharacterEncodingFilter filter = new CharacterEncodingFilter();
 		filter.setEncoding("utf-8");
@@ -91,6 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureHandler(authenticationFailureHandler) // 로그인 실패 핸들러
 			.successHandler(authenticationSuccessHandler); // 로그인 성공 핸들러 
 			// /login으로 요청하면 스프링시큐리티가 제공하는 로그인 페이지로 이동 
+		
         
         http.logout()
         	.invalidateHttpSession(true)
@@ -113,8 +103,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password("{noop}1234").roles("ADMIN","MEMBER");
-        auth.inMemoryAuthentication().withUser("fefe").password("{noop}1234").roles("MEMBER");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 }

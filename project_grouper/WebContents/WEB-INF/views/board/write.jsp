@@ -8,9 +8,11 @@
 	</div>
 	
 	<form action="${contextPath}/board/write" method="post">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		
 		<div class="form-group">
 		  <label for="groupName"><b>그룹명:</b></label>
-		  <input type="text" class="form-control" id="groupName">
+		  <input type="text" class="form-control" id="groupName" name="groupName">
 		</div>
 		
 		<div class="form-group">
@@ -44,28 +46,32 @@
 	
 		<div class="form-group">
 		  <label for="capacity"><b>그룹인원:</b> ※ 자신을 포함한 인원 수를 입력해주세요.</label>
-		  <input type="number" class="form-control" id="capacity" min="2" max="100" step="1" placeholder="최소 2명, 최대 100명" onchange="validateCapacity()">
+		  <input type="number" class="form-control" id="capacity" name="capacity" min="2" max="100" step="1" placeholder="최소 2명, 최대 100명" onchange="validateCapacity()">
 		</div>
 	  
 		<div class="form-group">
 		  <label for="startDate"><b>시작일:</b></label>
-		  <input type="date" class="form-control" id="startDate">
+		  <input type="date" class="form-control" id="startDate" name="startDate">
 		</div>  
 	
 		<div class="form-group">
 		  <label for="details"><b>상세내용:</b></label>
-		  <textarea class="form-control" id="details" rows="5"></textarea>
+		  <textarea class="form-control" id="details" rows="5" name="details"></textarea>
 		</div>
 		
 		<div class="form-group">
 			<label for="author"><b>작성자:</b></label>
-			<input type="text" class="form-control" id="author" value="<sec:authentication property="principal.username"/>" readonly>
+			<input type="text" class="form-control" id="author" name="author" value="<sec:authentication property="principal.username"/>" readonly>
 		</div>
 		
 		<div style="text-align: right;">
 			<button class="btn btn-primary">작성</button>
 			<a href="${contextPath}" class="btn btn-secondary">취소</a>
 		</div>
+		
+		<input type="hidden" id="isStarted" name="isStarted" value="N">
+		<input type="hidden" id="currentParticipants" name="currentParticipants" value=1>
+		
 	</form>
   
 </div>

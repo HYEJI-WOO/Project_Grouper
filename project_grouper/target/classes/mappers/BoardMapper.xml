@@ -5,8 +5,8 @@
   
 <mapper namespace="com.jafa.repository.BoardRepository">
 	<insert id="save">
-		INSERT INTO gp_board(bno, groupName, category, location, offlineLocation, capacity, startDate, details, author, isStarted) 
-		VALUES (#{gp_board_seq.nextval}, #{groupName}, #{category}, #{location}, #{offlineLocation}, #{capacity}, #{startDate}, #{details}, #{author}, #{isStarted})
+		INSERT INTO gp_board(bno, groupName, category, location, offlineLocation, capacity, currentParticipants, startDate, details, author, isStarted) 
+		VALUES (gp_board_seq.nextval, #{groupName}, #{category}, #{location}, #{offlineLocation}, #{capacity}, #{currentParticipants}, #{startDate}, #{details}, #{author}, #{isStarted})
 	</insert>  
 	
 	<select id="boardList" resultMap="boardMap">
@@ -20,6 +20,7 @@
 		<result property="location" column="location"/>
 		<result property="offlineLocation" column="offlineLocation"/>
 		<result property="capacity" column="capacity"/>
+		<result property="currentParticipants" column="currentParticipants"/>
 		<result property="startDate" column="startDate"/>
 		<result property="details" column="details"/>
 		<result property="author" column="author"/>

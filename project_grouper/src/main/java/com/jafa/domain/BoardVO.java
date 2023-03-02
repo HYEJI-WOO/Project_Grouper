@@ -16,14 +16,15 @@ import lombok.ToString;
 @Builder
 @ToString
 public class BoardVO {
-	private int bno;
+	private Long bno;
     private String groupName;
     private String category;
     private String location;
     private String offlineLocation;
-    private int capacity;
+    private Long capacity;
+    private Long currentParticipants;
     private Date startDate;
     private String details;
     private String author;
-    private char isStarted;
+    private String isStarted;
 }

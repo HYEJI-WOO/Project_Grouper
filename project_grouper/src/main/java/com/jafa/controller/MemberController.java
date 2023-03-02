@@ -29,11 +29,6 @@ public class MemberController {
 	@Autowired
 	MemberService memberService; 
 	
-	@GetMapping("/all")
-	public void doAll() {
-		log.info("모두 접근 허용");
-	}
-	
 	@PreAuthorize("isAuthenticated()") // 인증된 사용자 
 	@GetMapping("/myPage")
 	public String myPage(Authentication  auth, Model model) {
@@ -56,7 +51,7 @@ public class MemberController {
 	@GetMapping("/accessError")
 	public void accessError() {
 		log.info("접근이 거부됨.");
-		// member/accessError.jsp 생성
+		
 	}
 	
 	@RequestMapping("/login")
