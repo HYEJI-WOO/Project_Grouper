@@ -17,7 +17,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="${contextPath}/board/${item.bno}">
+                            <a href="${contextPath}/board/detail?bno=${item.bno}">
                                 ${item.groupName}
                             </a>
                         </h5>

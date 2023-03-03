@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jafa.domain.BoardVO;
+import com.jafa.domain.Criteria;
 import com.jafa.repository.BoardRepository;
 
 @Service
@@ -14,6 +15,7 @@ public class BoardService {
 
 	@Autowired
 	BoardRepository boardRepository;
+	
 	
 	// 등록
 	@Transactional
@@ -23,6 +25,10 @@ public class BoardService {
 	
 	public List<BoardVO> boardList() {
 		return boardRepository.boardList();
+	}
+	
+	public BoardVO detail(Long bno) {
+		return boardRepository.get(bno);
 	}
 			
 }

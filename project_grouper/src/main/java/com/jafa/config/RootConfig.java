@@ -15,6 +15,8 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
+import com.jafa.domain.BoardVO;
+
 @Configuration
 @MapperScan("com.jafa.repository")
 @PropertySource(value = "classpath:database/oracle.properties")
@@ -45,6 +47,8 @@ public class RootConfig {
 		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
 		factory.setDataSource(dataSource());
 		factory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mappers/**/*Mapper.xml"));
+		
+		factory.setTypeAliases(BoardVO.class);
 		return factory;
 	}
 	

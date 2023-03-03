@@ -3,6 +3,7 @@ package com.jafa.repository;
 import java.util.List;
 
 import com.jafa.domain.BoardVO;
+import com.jafa.domain.Criteria;
 
 public interface BoardRepository {
 	
@@ -11,4 +12,9 @@ public interface BoardRepository {
 	
 	// 목록
 	List<BoardVO> boardList();
+	
+	BoardVO get(Long bno);
+	
+	
+	
 }

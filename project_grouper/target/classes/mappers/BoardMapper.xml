@@ -9,9 +9,14 @@
 		VALUES (gp_board_seq.nextval, #{groupName}, #{category}, #{location}, #{offlineLocation}, #{capacity}, #{currentParticipants}, #{startDate}, #{details}, #{author}, #{isStarted})
 	</insert>  
 	
+	<select id="get" resultType="boardVO">
+		select * from gp_board where bno = #{bno}
+	</select>
+	
 	<select id="boardList" resultMap="boardMap">
-		select * from gp_board
+		select * from gp_board order by bno desc
 	</select>	
+	
 	
 	<resultMap type="com.jafa.domain.BoardVO" id="boardMap">
 		<result property="bno" column="bno"/>
