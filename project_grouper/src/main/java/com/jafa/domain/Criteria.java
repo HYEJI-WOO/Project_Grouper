@@ -15,7 +15,7 @@ public class Criteria {
 	private String keyword;
 	
 	public Criteria() {
-		this(1, 10);
+		this(1, 18);
 	}
 	
 	public Criteria(int page, int perPageNum) {

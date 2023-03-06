@@ -11,7 +11,9 @@ public interface BoardRepository {
 	void save(BoardVO vo);
 	
 	// 목록
-	List<BoardVO> boardList();
+	List<BoardVO> boardList(Criteria criteria);
+	
+	int getTotalCount(Criteria criteria);
 	
 	BoardVO get(Long bno);
 	

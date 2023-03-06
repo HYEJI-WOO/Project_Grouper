@@ -14,13 +14,15 @@ public class Pagination {
 	private int endPage; 
 	private int tempEndPage; 
 	private int displayPageNum; 
+	private int totalCount;
 	
 	private boolean prev; 
 	private boolean next; 
 	
 	public Pagination(Criteria criteria, int totalCount) {
 		this.criteria = criteria;
-		this.displayPageNum = 10;
+		this.displayPageNum = 5;
+		this.totalCount = totalCount;
 		
 		endPage = (int) Math.ceil(criteria.getPage()/(double)displayPageNum)*displayPageNum;
 		startPage = endPage - displayPageNum + 1;

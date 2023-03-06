@@ -13,9 +13,21 @@
 		select * from gp_board where bno = #{bno}
 	</select>
 	
-	<select id="boardList" resultMap="boardMap">
-		select * from gp_board order by bno desc
+	<select id="boardList" resultType="boardVO">
+		<![CDATA[
+		SELECT 
+		    ROWNUM, bno, groupName, currentParticipants, capacity, author, startDate
+		FROM 
+		    (SELECT /*+INDEX_DESC(gp_board pk_gp_board)*/ 
+		        ROWNUM AS RN, bno, groupName, currentParticipants, capacity, author, startDate 
+		    FROM gp_board WHERE ROWNUM <= #{maxRow})
+		WHERE RN > #{minRow}
+		]]>
 	</select>	
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from gp_board
+	</select>
 	
 	
 	<resultMap type="com.jafa.domain.BoardVO" id="boardMap">

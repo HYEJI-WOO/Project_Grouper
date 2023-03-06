@@ -15,7 +15,7 @@
 				<span class="ml-4">${b.groupName}</span>
 			</div>
 		</div>
-		<div class="card-body" style="min-height:350px">
+		<div class="card-body" style="white-space:pre-line; min-height:350px">
 			${b.details}
 		</div>
 		
