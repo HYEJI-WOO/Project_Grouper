@@ -13,6 +13,10 @@
 		select * from gp_board where bno = #{bno}
 	</select>
 	
+	<delete id="deleteById">
+		delete from gp_board where bno = #{bno}
+	</delete>
+	
 	<select id="boardList" resultType="boardVO">
 		<![CDATA[
 		SELECT 

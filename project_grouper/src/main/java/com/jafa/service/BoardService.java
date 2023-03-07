@@ -34,6 +34,10 @@ public class BoardService {
 	public Pagination getPagination(Criteria criteria) {
 	    Pagination pagination = new Pagination(criteria, boardRepository.getTotalCount(criteria));
 	    return pagination;
-	  }
+	}
+	
+	public void delete(int bno) {
+        boardRepository.deleteById(bno);
+    }
 			
 }

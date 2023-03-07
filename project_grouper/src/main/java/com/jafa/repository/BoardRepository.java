@@ -16,6 +16,8 @@ public interface BoardRepository {
 	int getTotalCount(Criteria criteria);
 	
 	BoardVO get(Long bno);
+
+	void deleteById(int bno);
 	
 	
 	

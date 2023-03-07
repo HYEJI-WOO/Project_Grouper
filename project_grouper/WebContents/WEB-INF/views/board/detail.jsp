@@ -19,13 +19,19 @@
 			${b.details}
 		</div>
 		
-		<div class="card-footer">
-			<c:if test="${b.author == pageContext.request.userPrincipal.name}">
-		        <button class="btn btn-warning modBoard">수정</button>
-		        <button class="btn btn-danger delBoard">삭제</button>
+		<div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+		    <a href="${contextPath}" class="btn btn-info">목록</a>
+		    <c:if test="${b.author == pageContext.request.userPrincipal.name}">
+		        <div>
+		            <a href="${contextPath}/board/update/${b.bno}" class="btn btn-warning modBoard">수정</a>
+		            <form action="${contextPath}/board/delete/${b.bno}" method="post" style="display: inline;">
+		                <button class="btn btn-danger delBoard" type="submit">삭제</button>
+		                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+		            </form>
+		        </div>
 		    </c:if>
-		    <button class="btn btn-info" onclick="location.href='${contextPath}'">목록</button>
 		</div>
+		
 	</div>
 	
 	<div>
@@ -107,5 +113,6 @@
   $('#apply-modal').on('hidden.bs.modal', function (e) {
     $(this).find('form')[0].reset();
   });
+
 </script>
 
