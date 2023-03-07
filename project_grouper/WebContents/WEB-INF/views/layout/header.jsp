@@ -15,6 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
+<script>const contextPath = '${contextPath}';</script>
 <script src="${contextPath}/resources/js/main.js"></script>
 
 </head>

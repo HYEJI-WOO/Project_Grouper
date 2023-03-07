@@ -39,5 +39,9 @@ public class BoardService {
 	public void delete(int bno) {
         boardRepository.deleteById(bno);
     }
+
+	public void update(BoardVO vo) {
+		boardRepository.updateById(vo);
+	}
 			
 }

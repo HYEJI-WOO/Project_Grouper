@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jafa.domain.BoardVO;
 import com.jafa.domain.Criteria;
@@ -19,7 +20,6 @@ public class HomeController {
 	
 	@Autowired
 	BoardService boardService;
-	
 	
 	@GetMapping("/")
 	public String home(@ModelAttribute("cri") Criteria criteria, Model model) {

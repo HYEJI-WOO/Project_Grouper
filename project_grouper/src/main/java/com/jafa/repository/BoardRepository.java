@@ -18,6 +18,8 @@ public interface BoardRepository {
 	BoardVO get(Long bno);
 
 	void deleteById(int bno);
+
+	void updateById(BoardVO vo);
 	
 	
 	

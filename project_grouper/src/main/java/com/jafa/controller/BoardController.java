@@ -41,7 +41,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/detail")
-	public void detail(Authentication  auth, Long bno, Model model) {
+	public void detail(Authentication auth, Long bno, Model model) {
 		BoardVO vo = boardService.detail(bno);
 		model.addAttribute("b", vo);
 	}
@@ -51,5 +51,21 @@ public class BoardController {
 		boardService.delete(bno);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/update/{bno}")
+	public String updateForm(@PathVariable Long bno, Model model) {
+	    BoardVO vo = boardService.detail(bno);
+	    model.addAttribute("b", vo);
+	    return "board/update";
+	}
+	
+	@PostMapping("/update")
+	public String update(BoardVO vo, RedirectAttributes rttr) {
+	    boardService.update(vo);
+	    rttr.addFlashAttribute("msg", "게시글이 수정되었습니다.");
+	    return "redirect:/board/detail?bno=" + vo.getBno();
+	}
+
+
 	
 }

@@ -17,6 +17,13 @@
 		delete from gp_board where bno = #{bno}
 	</delete>
 	
+	<update id="updateById">
+		update gp_board 
+		set groupName=#{groupName}, category=#{category}, location=#{location}, offlineLocation=#{offlineLocation}, capacity=#{capacity}, startDate=#{startDate}, details=#{details}
+		where bno = #{bno}
+		
+	</update>
+	
 	<select id="boardList" resultType="boardVO">
 		<![CDATA[
 		SELECT 
