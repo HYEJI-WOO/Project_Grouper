@@ -21,6 +21,4 @@ public interface BoardRepository {
 
 	void updateById(BoardVO vo);
 	
-	
-	
 }

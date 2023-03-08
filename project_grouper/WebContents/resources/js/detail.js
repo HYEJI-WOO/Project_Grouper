@@ -1,18 +1,13 @@
-$(function(){
-  let pageForm = $('<form/>');
-  let pageTag = $('[name="page"]');
-	
-  $('.list').on('click', function(){
-    pageForm.attr('method', 'get')
-      .attr('action', `${contextPath}`)
-      .append(pageTag)
-      .appendTo('body')
-      .submit();
-  });
+$(function() {
 
-  $('#apply-modal').on('hidden.bs.modal', function (e) {
+  $('#apply-modal').on('hidden.bs.modal', function(e) {
     $(this).find('form')[0].reset();
   });
+  
+  $('input').prop('disabled', true);
+  
+  let offlineInput = $('#offline-input');
+  if (b.offlineLocation === null) {
+    offlineInput.hide();
+  }
 });
-
-

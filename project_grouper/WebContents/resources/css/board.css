@@ -1,6 +1,6 @@
  @charset "UTF-8";
  
- .form-group label {
+ 	.form-group label {
         display: black;
         font-weight: bold;
         margin-bottom: 5px;
@@ -24,12 +24,21 @@
     .form-check-label {
         margin-bottom: 0;
     }
+    
+	.details {
+	  border: 1px solid #ddd;
+	  background-color: #f9f9f9;
+	  padding: 10px;
+	  white-space: pre-line;
+	}
+	
+	input[disabled], input {
+	  border: none;
+	  color: #000000;
+	}
 
     select.form-control:not([size]):not([multiple]) {
-        height: calc(1.5em + 0.75rem + 2px);
+      height: calc(1.5em + 0.75rem + 2px);
     }
-
-    textarea.form-control {
-        height: calc(1.5em + 1.25rem + 2px);
-        resize: vertical;
-    }
+    
+	

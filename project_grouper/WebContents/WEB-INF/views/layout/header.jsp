@@ -24,22 +24,28 @@
 <nav class="navbar navbar-expand-sm navbar-dark justify-content-between" style="background-color: paleturquoise">
    <a href="${contextPath}"><img src="${contextPath}/resources/images/LOGO.png" alt="LOGO" width="150" /></a>
 	
-   <ul class="nav nav-pills">
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">모집중</a>
-	    <div class="dropdown-menu">
-	      <a class="dropdown-item" href="#">온라인</a>
-	      <a class="dropdown-item" href="#">오프라인</a>
-	    </div>
-  	</li>
-	<li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">진행중</a>
-	    <div class="dropdown-menu">
-	      <a class="dropdown-item" href="#">온라인</a>
-	      <a class="dropdown-item" href="#">오프라인</a>
-	    </div>
-  	</li>	    
-  </ul>
+	<ul class="nav nav-pills">
+	    <li class="nav-item dropdown">
+	      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">온라인</a>
+		    <div class="dropdown-menu">
+		      <a class="dropdown-item" href="#">운동/등산</a>
+		      <a class="dropdown-item" href="#">여행</a>
+		      <a class="dropdown-item" href="#">공부/독서</a>
+		      <a class="dropdown-item" href="#">봉사활동</a>
+		      <a class="dropdown-item" href="#">기타</a>
+		    </div>
+	  	</li>
+		<li class="nav-item dropdown">
+	      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">오프라인</a>
+		    <div class="dropdown-menu">
+		      <a class="dropdown-item" href="#">운동/등산</a>
+		      <a class="dropdown-item" href="#">여행</a>
+		      <a class="dropdown-item" href="#">공부/독서</a>
+		      <a class="dropdown-item" href="#">봉사활동</a>
+		      <a class="dropdown-item" href="#">기타</a>
+		    </div>
+	  	</li>	    
+	</ul>   
   
   <!-- 로그인,로그아웃,회원가입 -->
   <ul class="navbar-nav">

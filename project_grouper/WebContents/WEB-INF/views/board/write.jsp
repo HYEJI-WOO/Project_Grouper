@@ -12,12 +12,12 @@
 		
 		<div class="form-group">
 		  <label for="groupName"><b>그룹명:</b></label>
-		  <input type="text" class="form-control" id="groupName" name="groupName">
+		  <input type="text" class="form-control" id="groupName" name="groupName" required>
 		</div>
 		
 		<div class="form-group">
 		<label for="category"><b>카테고리:</b></label>
-			<select id="category" class="form-control" name="category">
+			<select id="category" class="form-control" name="category" required>
 				<option value="">--선택하세요--</option>
 				<option value="sports">운동/등산</option>
 				<option value="travel">여행</option>
@@ -30,11 +30,11 @@
 		<div class="form-group">
 		  <label><b>온/오프라인:</b></label>
 		  <div class="form-check">
-		    <input type="radio" class="form-check-input" id="online" name="location" value="online">
+		    <input type="radio" class="form-check-input" id="online" name="location" value="online" required onclick="document.getElementById('offlineLocation').removeAttribute('required');">
 		    <label class="form-check-label" for="online">온라인</label>
 		  </div>
 		  <div class="form-check">
-		    <input type="radio" class="form-check-input" id="offline" name="location" value="offline">
+		    <input type="radio" class="form-check-input" id="offline" name="location" value="offline" onclick="document.getElementById('offlineLocation').setAttribute('required', '');">
 		    <label class="form-check-label" for="offline">오프라인</label>
 		  </div>
 		</div>
@@ -43,20 +43,21 @@
 		  <label for="offlineLocation"><b>오프라인 장소:</b></label>
 		  <input type="text" class="form-control" id="offlineLocation" name="offlineLocation">
 		</div>
+				
 	
 		<div class="form-group">
 		  <label for="capacity"><b>그룹인원:</b> ※ 자신을 포함한 인원 수를 입력해주세요.</label>
-		  <input type="number" class="form-control" id="capacity" name="capacity" min="2" max="100" step="1" placeholder="최소 2명, 최대 100명" onchange="validateCapacity()">
+		  <input type="number" class="form-control" id="capacity" name="capacity" min="2" max="100" step="1" placeholder="최소 2명, 최대 100명" onchange="validateCapacity()" required>
 		</div>
 	  
 		<div class="form-group">
 		  <label for="startDate"><b>시작일:</b></label>
-		  <input type="date" class="form-control" id="startDate" name="startDate">
+		  <input type="date" class="form-control" id="startDate" name="startDate" required>
 		</div>  
 	
 		<div class="form-group">
 		  <label for="details"><b>상세내용:</b></label>
-		  <textarea class="form-control" id="details" rows="5" name="details"></textarea>
+		  <textarea class="form-control" id="details" rows="5" name="details" required></textarea>
 		</div>
 		
 		<div class="form-group">
@@ -65,7 +66,7 @@
 		</div>
 		
 		<div style="text-align: right;">
-			<button class="btn btn-primary">작성</button>
+			<button class="btn btn-primary" id="submit-btn">작성</button>
 			<a href="${contextPath}" class="btn btn-secondary">취소</a>
 		</div>
 		
@@ -109,7 +110,4 @@
 	    alert("모집인원은 최대 100명까지 가능합니다.");
 	  }
 	}
-
-  
-  
 </script>

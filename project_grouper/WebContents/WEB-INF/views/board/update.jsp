@@ -14,15 +14,10 @@
 		</div>
 		
 		<div class="form-group">
-		<label for="category"><b>카테고리:</b></label>
-			<select id="category" class="form-control" name="category">
-				<option value="">--선택하세요--</option>
-				<option value="sports">운동/등산</option>
-				<option value="travel">여행</option>
-				<option value="study">공부/독서</option>
-				<option value="volunteer">봉사활동</option>
-				<option value="other">기타</option>
-			</select>    
+		<div class="col form-group">
+                <label><b>카테고리:</b></label>
+                <input type="text" value="${b.category == 'travel' ? '여행' : (b.category == 'sports' ? '운동/등산' : (b.category == 'study' ? '공부/독서' : (b.category == 'volunteer' ? '봉사활동' : (b.category == 'other' ? '기타' : b.category))))}">
+            </div>  
 		</div>
 	
 		<div class="form-group">
