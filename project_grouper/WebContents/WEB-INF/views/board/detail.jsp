@@ -11,6 +11,8 @@
     
     <form action="${contextPath}/board/update" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        
+        <input type="hidden" name="bno" value="${b.bno}">
 
 		<div class="col form-group">
 		    <h3 style="font-size: 1.5rem;">
@@ -69,7 +71,7 @@
 
 	    <c:if test="${b.author == pageContext.request.userPrincipal.name}">
 	        <div>
-	            <a href="${contextPath}/board/update/${b.bno}" class="btn btn-warning modBoard">수정</a>
+	            <button class="btn btn-warning updateBoard">수정</button>
 	            <form action="${contextPath}/board/delete/${b.bno}" method="post" style="display: inline;">
 	                <button class="btn btn-danger delBoard" type="submit">삭제</button>
 	                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -156,3 +158,16 @@
 </div>
 
 <%@ include file="../layout/footer.jsp" %>
+
+<script>
+$(function(){
+
+	$('.updateBoard').on('click',function(){
+		$('<form/>').attr('method','get')
+		.attr('action','${contextPath}/board/update')
+		.append('<input type="hidden" value="${b.bno}" name="bno">')
+		.appendTo('body')
+		.submit();
+	})	
+})
+</script>

@@ -52,20 +52,17 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/update/{bno}")
-	public String updateForm(@PathVariable Long bno, Model model) {
+	@GetMapping("/update")
+	public String updateForm(Long bno, Model model) {
 	    BoardVO vo = boardService.detail(bno);
 	    model.addAttribute("b", vo);
-	    return "board/update";
+	    return "board/updateForm";
 	}
 	
 	@PostMapping("/update")
-	public String update(BoardVO vo, RedirectAttributes rttr) {
-	    boardService.update(vo);
-	    rttr.addFlashAttribute("msg", "게시글이 수정되었습니다.");
-	    return "redirect:/board/detail?bno=" + vo.getBno();
+	public String updateForm(BoardVO vo, RedirectAttributes rttr) {
+		boardService.update(vo);
+		return "redirect:/";
 	}
-
-
 	
 }
