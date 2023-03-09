@@ -19,7 +19,7 @@
 		        : (b.category == 'study' ? '공부/독서' 
 		        : (b.category == 'volunteer' ? '봉사활동' 
 		        : (b.category == 'other' ? '기타' : b.category))))}&gt; - 
-		        <span style="font-size: 1rem; color: ${b.location == 'online' ? 'blue' : 'red'};"><b>${b.location == 'online' ? '온라인' : '오프라인'}</b></span>
+		        <span style="font-size: 1rem; color: ${b.location == 'online' ? 'red' : 'blue'};"><b>${b.location == 'online' ? '온라인' : '오프라인'}</b></span>
 		    </h3>
 		</div>
 		
@@ -38,10 +38,16 @@
 		    <input type="text" id="capacity" name="capacity" value="${b.currentParticipants}/${b.capacity}" min="2" max="100" step="1" onchange="validateCapacity()">
 		</div>
 		
+		<div id="region-input" class="form-group" ${b.location == "offline" ? "" : "style='display:none;'"} style="padding-left: 20px;">
+		  	<label for="region"><b>지역:</b></label>
+		  	<input type="text" id="region" name="region" value="${b.region}">
+		</div>
+		
 		<div id="offline-input" class="form-group" ${b.location == "offline" ? "" : "style='display:none;'"} style="padding-left: 20px;">
 		    <label for="offlineLocation"><b>오프라인 장소:</b></label>
 		    <input type="text" id="offlineLocation" name="offlineLocation" value="${b.offlineLocation}">
 		</div>
+		
 		
 		<div class="form-group" style="padding-left: 20px;">
 		    <label for="startDate"><b>시작일:</b></label>

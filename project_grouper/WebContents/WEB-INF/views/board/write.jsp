@@ -30,20 +30,42 @@
 		<div class="form-group">
 		  <label><b>온/오프라인:</b></label>
 		  <div class="form-check">
-		    <input type="radio" class="form-check-input" id="online" name="location" value="online" required onclick="document.getElementById('offlineLocation').removeAttribute('required');">
+		    <input type="radio" class="form-check-input" id="online" name="location" value="online" required onclick="document.getElementById('offlineLocation').removeAttribute('required');document.getElementById('region').removeAttribute('required', '');">
 		    <label class="form-check-label" for="online">온라인</label>
 		  </div>
 		  <div class="form-check">
-		    <input type="radio" class="form-check-input" id="offline" name="location" value="offline" onclick="document.getElementById('offlineLocation').setAttribute('required', '');">
+		    <input type="radio" class="form-check-input" id="offline" name="location" value="offline" onclick="document.getElementById('offlineLocation').setAttribute('required', '');document.getElementById('region').setAttribute('required', '');">
 		    <label class="form-check-label" for="offline">오프라인</label>
 		  </div>
-		</div>
+		</div>		
 		
+		<div id="region-input" class="form-group" style="display: none;">
+		  <label for="region"><b>지역:</b></label>
+		  <select class="form-control" id="region" name="region">
+		    <option value="">선택하세요</option>
+		    <option value="서울">서울</option>
+		    <option value="경기">경기</option>
+		    <option value="인천">인천</option>
+		    <option value="강원">강원</option>
+		    <option value="충북">충북</option>
+		    <option value="충남">충남</option>
+		    <option value="대전">대전</option>
+		    <option value="경북">경북</option>
+		    <option value="경남">경남</option>
+		    <option value="대구">대구</option>
+		    <option value="울산">울산</option>
+		    <option value="부산">부산</option>
+		    <option value="전북">전북</option>
+		    <option value="전남">전남</option>
+		    <option value="광주">광주</option>
+		    <option value="제주">제주</option>
+		  </select>
+		</div>			
+				
 		<div id="offline-input" class="form-group" style="display: none;">
 		  <label for="offlineLocation"><b>오프라인 장소:</b></label>
 		  <input type="text" class="form-control" id="offlineLocation" name="offlineLocation">
-		</div>
-				
+		</div>		
 	
 		<div class="form-group">
 		  <label for="capacity"><b>그룹인원:</b> ※ 자신을 포함한 인원 수를 입력해주세요.</label>
@@ -80,22 +102,25 @@
 <%@ include file="../layout/footer.jsp" %>
 <script>
 
-  const offlineRadio = document.getElementById('offline');
-  const offlineInput = document.getElementById('offline-input');
-  
-  offlineRadio.addEventListener('click', () => {
-    if (offlineRadio.checked) {
-      offlineInput.style.display = 'block';
-    } else {
-      offlineInput.style.display = 'none';
-    }
-  });
+	const onlineRadio = document.getElementById('online');
+	const offlineRadio = document.getElementById('offline');
+	const offlineInput = document.getElementById('offline-input');
+	const regionInput = document.getElementById('region-input');
+	const offlineLocation = document.getElementById('offlineLocation');
+	const region = document.getElementById('region');
+	
+	offlineRadio.addEventListener('click', () => {
+	  offlineInput.style.display = 'block';
+	  regionInput.style.display = 'block';
+	});
+	
+	onlineRadio.addEventListener('click', () => {
+	  offlineInput.style.display = 'none';
+	  regionInput.style.display = 'none';
+	  offlineLocation.value='';
+	  region.value='';
+	});
 
-  const onlineRadio = document.getElementById('online');
-  
-  onlineRadio.addEventListener('click', () => {
-    offlineInput.style.display = 'none';
-  });
   
  /* */
 	function validateCapacity() {

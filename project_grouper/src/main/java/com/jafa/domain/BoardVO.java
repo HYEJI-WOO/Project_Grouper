@@ -20,6 +20,7 @@ public class BoardVO {
     private String groupName;
     private String category;
     private String location;
+    private String region;
     private String offlineLocation;
     private Long capacity;
     private Long currentParticipants;

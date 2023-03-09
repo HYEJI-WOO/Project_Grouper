@@ -5,8 +5,8 @@
   
 <mapper namespace="com.jafa.repository.BoardRepository">
 	<insert id="save">
-		INSERT INTO gp_board(bno, groupName, category, location, offlineLocation, capacity, currentParticipants, startDate, details, author, isStarted) 
-		VALUES (gp_board_seq.nextval, #{groupName}, #{category}, #{location}, #{offlineLocation}, #{capacity}, #{currentParticipants}, #{startDate}, #{details}, #{author}, #{isStarted})
+		INSERT INTO gp_board(bno, groupName, category, location, offlineLocation, region, capacity, currentParticipants, startDate, details, author, isStarted) 
+		VALUES (gp_board_seq.nextval, #{groupName}, #{category}, #{location}, #{offlineLocation}, #{region}, #{capacity}, #{currentParticipants}, #{startDate}, #{details}, #{author}, #{isStarted})
 	</insert>  
 	
 	<select id="get" resultType="boardVO">
@@ -27,10 +27,10 @@
 	<select id="boardList" resultType="boardVO">
 		<![CDATA[
 		SELECT 
-		    ROWNUM, bno, groupName, currentParticipants, capacity, author, startDate
+		    ROWNUM, bno, groupName, currentParticipants, location, capacity, author, startDate, region
 		FROM 
 		    (SELECT /*+INDEX_DESC(gp_board pk_gp_board)*/ 
-		        ROWNUM AS RN, bno, groupName, currentParticipants, capacity, author, startDate 
+		        ROWNUM AS RN, bno, groupName, currentParticipants, location, capacity, author, startDate, region 
 		    FROM gp_board WHERE ROWNUM <= #{maxRow})
 		WHERE RN > #{minRow}
 		]]>
@@ -53,5 +53,6 @@
 		<result property="details" column="details"/>
 		<result property="author" column="author"/>
 		<result property="isStarted" column="isStarted"/>
+		<result property="region" column="region"/>
 	</resultMap>
 </mapper>

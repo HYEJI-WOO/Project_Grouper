@@ -21,8 +21,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm navbar-dark justify-content-between" style="background-color: paleturquoise">
-   <a href="${contextPath}"><img src="${contextPath}/resources/images/LOGO.png" alt="LOGO" width="150" /></a>
+<nav class="navbar navbar-expand-sm navbar-dark justify-content-between" style="background-color: #b6faf8">
+   <a href="${contextPath}"><img src="${contextPath}/resources/images/GROUPER.png" alt="GROUPER" width="200" /></a>
 	
 	<ul class="nav nav-pills">
 	    <li class="nav-item dropdown">

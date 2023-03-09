@@ -10,4 +10,5 @@ $(function() {
   if (b.offlineLocation === null) {
     offlineInput.hide();
   }
+  
 });
