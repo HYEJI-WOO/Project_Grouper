@@ -21,54 +21,40 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm navbar-dark justify-content-between" style="background-color: #b6faf8">
-   <a href="${contextPath}"><img src="${contextPath}/resources/images/GROUPER.png" alt="GROUPER" width="200" /></a>
-	
-	<ul class="nav nav-pills">
-	    <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">온라인</a>
-		    <div class="dropdown-menu">
-		      <a class="dropdown-item" href="#">운동/등산</a>
-		      <a class="dropdown-item" href="#">여행</a>
-		      <a class="dropdown-item" href="#">공부/독서</a>
-		      <a class="dropdown-item" href="#">봉사활동</a>
-		      <a class="dropdown-item" href="#">기타</a>
-		    </div>
-	  	</li>
-		<li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">오프라인</a>
-		    <div class="dropdown-menu">
-		      <a class="dropdown-item" href="#">운동/등산</a>
-		      <a class="dropdown-item" href="#">여행</a>
-		      <a class="dropdown-item" href="#">공부/독서</a>
-		      <a class="dropdown-item" href="#">봉사활동</a>
-		      <a class="dropdown-item" href="#">기타</a>
-		    </div>
-	  	</li>	    
-	</ul>   
-  
-  <!-- 로그인,로그아웃,회원가입 -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-    <sec:authorize access="isAnonymous()">
-      <a class="nav-link" style="color: black; display: inline-block" href="${contextPath}/member/join">회원가입</a>
-      <a class="nav-link" style="color: black; display: inline-block" href="${contextPath}/member/login">로그인</a>
-    </sec:authorize>
-    <sec:authorize access="isAuthenticated()"><!-- 권한이 있는 경우  -->
-		<p>★<sec:authentication property="principal.username"/>님★</p> <!-- 로그인 id-->
-		
-		<sec:authorize access="hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')">
-			<a href="${contextPath}/member/myPage">나의정보보기</a><br>
-		</sec:authorize>
-		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
-			<a href="${contextPath}/member/admin">관리자페이지</a><br>
-		</sec:authorize>		
-		
-		<form action="${contextPath}/member/logout" method="post"> <!-- 기본값 : /logout -->
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-			<button class="btn btn-primary">로그아웃</button>
-		</form> 
-	</sec:authorize>
-    </li>
-  </ul>
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #b6faf8; height: 100px">
+  <div class="container-fluid d-flex justify-content-center align-items-center h-100">
+    <a class="navbar-brand" href="${contextPath}">
+      <img src="${contextPath}/resources/images/GROUPER.png" alt="GROUPER" width="200"/>
+    </a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <sec:authorize access="isAnonymous()">
+          <a class="nav-link" style="color: black; display: inline-block" href="${contextPath}/member/join">회원가입</a>
+          <a class="nav-link" style="color: black; display: inline-block" href="${contextPath}/member/login">로그인</a>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span style="color: black;">★<sec:authentication property="principal.username"/>님★</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <sec:authorize access="hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')">
+                <a class="dropdown-item" href="${contextPath}/member/myPage">나의정보보기</a>
+              </sec:authorize>
+              <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
+                <a class="dropdown-item" href="${contextPath}/member/admin">관리자페이지</a>
+              </sec:authorize>
+              <div class="dropdown-divider"></div>
+              <form class="px-4 py-2" action="${contextPath}/member/logout" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                <button class="btn btn-primary">로그아웃</button>
+              </form>
+            </div>
+          </div>
+        </sec:authorize>
+      </li>
+    </ul>
+  </div>
 </nav>
+
