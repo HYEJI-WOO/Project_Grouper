@@ -85,7 +85,7 @@
 	<div>
 		<sec:authorize access="isAuthenticated()">
 			<c:if test="${b.author != pageContext.request.userPrincipal.name}">
-				<button type="button" class="btn btn-success apply-button" data-toggle="modal" data-target="#apply-modal">
+				<button type="button" class="btn btn-success apply-button">
 					가입신청
 				</button>
 			</c:if>
@@ -108,7 +108,7 @@
         <form>
           <div class="form-group">
             <label for="name-input">이름</label>
-            <input type="text" class="form-control" id="name-input" required>
+            <input type="text" class="form-control" id="name-input" disabled>
           </div>
 
           <div class="form-group">
@@ -116,29 +116,26 @@
             <br>
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" id="year-input" placeholder="YYYY" pattern="[0-9]{4}" required>
+                <input type="text" class="form-control" id="year-input" placeholder="YYYY" pattern="[0-9]{4}" disabled>
               </div>
               <div class="col">
-                <input type="text" class="form-control" id="month-input" placeholder="MM" pattern="[0-9]{1,2}" required>
+                <input type="text" class="form-control" id="month-input" placeholder="MM" pattern="[0-9]{1,2}" disabled>
               </div>
               <div class="col">
-                <input type="text" class="form-control" id="day-input" placeholder="DD" pattern="[0-9]{1,2}" required>
+                <input type="text" class="form-control" id="day-input" placeholder="DD" pattern="[0-9]{1,2}" disabled>
               </div>
             </div>
           </div>
           
-          <div class="form-group">
-            <label for="gender-input">성별</label>
-            <select class="form-control" id="gender-input" required>
-              <option value="">-- 선택 --</option>
-              <option value="M">남성</option>
-              <option value="F">여성</option>
-            </select>
-          </div>
+		<div class="form-group">
+		  <label for="gender-input">성별</label>
+		  <input type="text" class="form-control" id="gender-input" disabled>
+		</div>
+
           
           <div class="form-group">
             <label for="phone-input">휴대전화</label>
-            <input type="tel" class="form-control" id="phone-input" required>
+            <input type="tel" class="form-control" id="phone-input" disabled>
           </div>
           
           <div class="form-group">
@@ -150,7 +147,7 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-primary">제출</button>
+        <button type="button" class="btn btn-primary" id="submit-btn">제출</button>
       </div>
       
     </div>
@@ -161,7 +158,6 @@
 
 <script>
 $(function(){
-
 	$('.updateBoard').on('click',function(){
 		$('<form/>').attr('method','get')
 		.attr('action','${contextPath}/board/update')
@@ -170,4 +166,70 @@ $(function(){
 		.submit();
 	})	
 })
+
+$(function() {
+  // 가입신청 버튼 클릭 시
+  $('.apply-button').on('click', function() {
+    // AJAX 요청 보내기
+    $.ajax({
+      type: "GET",
+      url: "${contextPath}/board/myInfo",
+      success: function(data) {
+        $('#name-input').val(data.name);
+        $('#year-input').val(data.year);
+        $('#month-input').val(data.month);
+        $('#day-input').val(data.day);
+        $('#gender-input').val(data.gender);
+        $('#gender-input').val(data.gender);
+        $('#phone-input').val(data.phone);
+
+        // 모달창 띄우기
+        $('#apply-modal').modal('show');
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        // 요청 실패 시 처리할 코드
+        alert('a');
+      }
+    });
+  });
+});
+
+//제출 버튼을 클릭하면 실행되는 함수
+$('#submit-btn').click(function() {
+  // 데이터를 수집
+  var name = $('#name-input').val();
+  var year = $('#year-input').val();
+  var month = $('#month-input').val();
+  var day = $('#day-input').val();
+  var gender = $('#gender-input').val();
+  var phone = $('#phone-input').val();
+  var promise = $('#promise-input').val();
+  
+  // AJAX 호출 수행
+  $.ajax({
+    url: 'submit.php', // 전송할 페이지 URL
+    method: 'POST', // 전송 방식
+    data: {
+      name: name,
+      year: year,
+      month: month,
+      day: day,
+      gender: gender,
+      phone: phone,
+      promise: promise
+    }, // 전송할 데이터
+    success: function(response) {
+      // 전송이 성공했을 때 실행되는 콜백 함수
+      console.log(response);
+    },
+    error: function(error) {
+      // 전송이 실패했을 때 실행되는 콜백 함수
+      console.log(error);
+    }
+  });
+});
+
+
+
+
 </script>

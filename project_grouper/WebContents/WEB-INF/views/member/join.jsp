@@ -37,23 +37,12 @@
         </div>
         <h5>이메일</h5>
 		<div class="form-group">
-		    <div class="email-inputs">
-		        <input type="text" name="email" class="form-control col-md-6" placeholder="이메일">
-		        <span>@</span>
-		        <select name="emailDomain" class="form-control col-md-6">
-		            <option value="">도메인을 선택하세요</option>
-		            <option value="gmail.com">gmail.com</option>
-		            <option value="naver.com">naver.com</option>
-		            <option value="daum.net">daum.net</option>
-		            <option value="nate.com">nate.com</option>
-		        </select>
-		    </div>
+		    <input type="email" name="email" class="form-control col-md-6" placeholder="이메일">
 		</div>
         <h5>휴대전화</h5>
         <div class="form-group">
             <input type="text" name="phone" class="form-control col-md-6" placeholder="휴대전화">
         </div>
-	
 		<div class="form-group">
 		    <h4>생년월일</h4>
 		    <div style="margin-top: 10px;">
