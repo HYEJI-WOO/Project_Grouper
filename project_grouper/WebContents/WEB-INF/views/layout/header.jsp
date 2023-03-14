@@ -21,10 +21,18 @@
 </head>
 <body>
 
+<style>
+.navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
+
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #b6faf8; height: 100px">
   <div class="container-fluid d-flex justify-content-center align-items-center h-100">
     <a class="navbar-brand" href="${contextPath}">
-      <img src="${contextPath}/resources/images/GROUPER.png" alt="GROUPER" width="200"/>
+      <img src="${contextPath}/resources/images/GROUPER.png" alt="GROUPER" width="300"/>
     </a>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -36,7 +44,7 @@
           <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <span style="color: black;">★<sec:authentication property="principal.username"/>님★</span>
+              <span style="color: black;"><sec:authentication property="principal.username"/>!!!</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
               <sec:authorize access="hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')">

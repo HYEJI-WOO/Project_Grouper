@@ -4,12 +4,26 @@
 <script src="${contextPath}/resources/js/detail.js"></script>
 <link rel="stylesheet" href="${contextPath}/resources/css/board.css">
 
+<style>
+  .form-border {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .gohome {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
+
 <div class="container">
     <div class="jumbotron">
         <h1>상세</h1>
     </div>
     
-    <form action="${contextPath}/board/update" method="post">
+    <form action="${contextPath}/board/update" method="post" class="form-border">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         
         <input type="hidden" name="bno" value="${b.bno}">
@@ -60,15 +74,29 @@
 		  <label for="details"><b>상세내용:</b></label>
 		  <div id="details" class="details" name="details">${b.details}</div>
 		</div>
+		
+		<div style="text-align: right;">
+		  <sec:authorize access="isAuthenticated()">
+		    <c:if test="${b.author != pageContext.request.userPrincipal.name}">
+		      <button type="button" class="btn btn-success apply-button">
+		        가입신청
+		      </button>
+		    </c:if>
+		  </sec:authorize>
+		</div>
+	
 
 		<input type="hidden" id="isStarted" name="isStarted" value="N">
 		<input type="hidden" id="currentParticipants" name="currentParticipants" value=1>
 		
 	</form>
+	<br>
+	<br>
+	<br>
 	
 	<div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
-	    <a href="${contextPath}?page=${param.page}" class="btn btn-info">목록</a>
-
+	    <a href="${contextPath}?page=${param.page}" class="btn btn-info gohome" style="margin: 0 auto;">목록</a>
+	
 	    <c:if test="${b.author == pageContext.request.userPrincipal.name}">
 	        <div>
 	            <button class="btn btn-warning updateBoard">수정</button>
@@ -79,18 +107,18 @@
 	        </div>
 	    </c:if>
 	</div>
-	
 	<input type="hidden" name="page" value="${param.page}">
-		
-	<div>
-		<sec:authorize access="isAuthenticated()">
-			<c:if test="${b.author != pageContext.request.userPrincipal.name}">
-				<button type="button" class="btn btn-success apply-button">
-					가입신청
-				</button>
-			</c:if>
-		</sec:authorize>
+	
+	<br>
+	<br>
+	<br>
+	
+	<div class="form-group">
+	  <label for="comment">댓글 달기:</label>
+	  <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+	  <button type="submit" class="btn btn-primary mt-2" style="float: right;">등록</button>
 	</div>
+	
 </div>
 
 <!-- Modal -->
