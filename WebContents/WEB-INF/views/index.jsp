@@ -13,22 +13,22 @@
 	    <h4 style="margin-bottom: 20px; color: #2c3e50; font-weight: bold;">지역</h4>
 	    <div class="list-group">
 	      <a href="${contextPath}/location=${location}/category=${category}/region=" class="list-group-item list-group-item-action ${region == null || region == '' ? 'active' : ''}">전체</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=서울" value="서울" class="list-group-item list-group-item-action ${region == '서울' ? 'active' : ''}">서울</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=경기" value="경기" class="list-group-item list-group-item-action ${region == '경기' ? 'active' : ''}">경기</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=인천" value="인천" class="list-group-item list-group-item-action ${region == '인천' ? 'active' : ''}">인천</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=강원" value="강원" class="list-group-item list-group-item-action ${region == '강원' ? 'active' : ''}">강원</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=충북" value="충북" class="list-group-item list-group-item-action ${region == '충북' ? 'active' : ''}">충북</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=충남" value="충남" class="list-group-item list-group-item-action ${region == '충남' ? 'active' : ''}">충남</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=대전" value="대전" class="list-group-item list-group-item-action ${region == '대전' ? 'active' : ''}">대전</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=경북" value="경북" class="list-group-item list-group-item-action ${region == '경북' ? 'active' : ''}">경북</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=경남" value="경남" class="list-group-item list-group-item-action ${region == '경남' ? 'active' : ''}">경남</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=대구" value="대구" class="list-group-item list-group-item-action ${region == '대구' ? 'active' : ''}">대구</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=울산" value="울산" class="list-group-item list-group-item-action ${region == '울산' ? 'active' : ''}">울산</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=부산" value="부산" class="list-group-item list-group-item-action ${region == '부산' ? 'active' : ''}">부산</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=전북" value="전북" class="list-group-item list-group-item-action ${region == '전북' ? 'active' : ''}">전북</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=전남" value="전남" class="list-group-item list-group-item-action ${region == '전남' ? 'active' : ''}">전남</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=광주" value="광주" class="list-group-item list-group-item-action ${region == '광주' ? 'active' : ''}">광주</a>
-	      <a href="${contextPath}/location=offline/category=${category}/region=제주" value="제주" class="list-group-item list-group-item-action ${region == '제주' ? 'active' : ''}">제주</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=서울" class="list-group-item list-group-item-action ${region == '서울' ? 'active' : ''}">서울</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=경기" class="list-group-item list-group-item-action ${region == '경기' ? 'active' : ''}">경기</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=인천" class="list-group-item list-group-item-action ${region == '인천' ? 'active' : ''}">인천</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=강원" class="list-group-item list-group-item-action ${region == '강원' ? 'active' : ''}">강원</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=충북" class="list-group-item list-group-item-action ${region == '충북' ? 'active' : ''}">충북</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=충남" class="list-group-item list-group-item-action ${region == '충남' ? 'active' : ''}">충남</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=대전" class="list-group-item list-group-item-action ${region == '대전' ? 'active' : ''}">대전</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=경북" class="list-group-item list-group-item-action ${region == '경북' ? 'active' : ''}">경북</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=경남" class="list-group-item list-group-item-action ${region == '경남' ? 'active' : ''}">경남</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=대구" class="list-group-item list-group-item-action ${region == '대구' ? 'active' : ''}">대구</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=울산" class="list-group-item list-group-item-action ${region == '울산' ? 'active' : ''}">울산</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=부산" class="list-group-item list-group-item-action ${region == '부산' ? 'active' : ''}">부산</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=전북" class="list-group-item list-group-item-action ${region == '전북' ? 'active' : ''}">전북</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=전남" class="list-group-item list-group-item-action ${region == '전남' ? 'active' : ''}">전남</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=광주" class="list-group-item list-group-item-action ${region == '광주' ? 'active' : ''}">광주</a>
+	      <a href="${contextPath}/location=offline/category=${category}/region=제주" class="list-group-item list-group-item-action ${region == '제주' ? 'active' : ''}">제주</a>
 	    </div>
 	  </div>
 	</div>
