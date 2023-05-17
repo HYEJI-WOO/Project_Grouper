@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jafa.repository.BoardRepository">
+	<sql id="condition">
+		<trim prefix="and">
+			<choose>
+		   		<when test="searchType=='N'.toString()">
+		   			groupName like '%'||#{keyword}||'%'
+		   		</when>
+		   		<when test="searchType=='D'.toString()">
+		   			details like '%'||#{keyword}||'%'
+		   		</when>
+		   		<when test="searchType=='A'.toString()">
+		   			author like '%'||#{keyword}||'%'
+		   		</when>
+		   	</choose>
+	   	</trim>    
+	   	<if test="category != null and category != ''">
+	    	and category = #{category}
+		</if>
+		<if test="location != null and location != ''">
+	    	and location = #{location}
+		</if>
+		<if test="region != null and region != ''">
+	    	and region = #{region}
+		</if>
+	</sql>
+
+
+	<insert id="save">
+		INSERT INTO gp_board(bno, groupName, category, location, offlineLocation, region, capacity, currentParticipants, startDate, details, author, isStarted) 
+		VALUES (gp_board_seq.nextval, #{groupName}, #{category}, #{location}, #{offlineLocation}, #{region}, #{capacity}, #{currentParticipants}, #{startDate}, #{details}, #{author}, #{isStarted})
+	</insert>  
+	
+	<select id="get" resultType="boardVO">
+		select * from gp_board where bno = #{bno}
+	</select>	
+	
+	<select id="checkDuplicateApply" resultType="java.lang.Integer">
+	    SELECT COUNT(*) FROM gp_apply
+	    WHERE bno = #{bno} AND memberId = #{memberId}
+	</select>
+	
+	
+	<delete id="deleteById">
+		delete from gp_board where bno = #{bno}
+	</delete>
+	
+	
+	<update id="updateById">
+		update gp_board 
+		set details=#{details}
+		where bno = #{bno}
+		
+	</update>
+	
+	<insert id="applyById">
+	    INSERT INTO gp_apply (ano, bno, memberId, name, year, month, day, phone, author, promise, approve)
+	    SELECT 
+	        gp_apply_seq.nextval,
+	        #{bno},
+	        #{memberId},
+	        m.name,
+	        m.year,
+	        m.month,
+	        m.day,
+	        m.phone,
+	        #{author},
+	        #{promise},
+	        'N'
+	    FROM gp_member m
+	    WHERE m.memberId = #{memberId}
+	</insert>
+	
+	<select id="getMyGroup" resultType="boardVO">
+		select * from gp_board where author = #{memberId}
+	</select>
+	
+	<delete id="cancelJoinGroup">
+		delete from gp_apply where bno = #{bno} and memberId = #{memberId}
+	</delete>
+
+	
+	<select id="boardList" resultType="boardVO">
+		<![CDATA[
+		SELECT 
+		    ROWNUM, bno, groupName, currentParticipants, location, capacity, author, startDate, region
+		FROM 
+		    (SELECT /*+INDEX_DESC(gp_board pk_gp_board)*/ 
+		        ROWNUM AS rn, bno, groupName, currentParticipants, location, capacity, author, startDate, region 
+		    FROM gp_board WHERE ROWNUM <= #{maxRow}
+		]]>
+			<include refid="condition"/>
+		<![CDATA[
+		)
+		where rn > #{minRow}
+		]]>
+	</select>	
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from gp_board
+		<where>
+	    	<include refid="condition"/>
+	    </where>		
+	</select>
+	
+	<resultMap type="com.jafa.domain.BoardVO" id="boardMap">
+		<result property="bno" column="bno"/>
+		<result property="groupName" column="groupName"/>
+		<result property="category" column="category"/>
+		<result property="location" column="location"/>
+		<result property="offlineLocation" column="offlineLocation"/>
+		<result property="capacity" column="capacity"/>
+		<result property="currentParticipants" column="currentParticipants"/>
+		<result property="startDate" column="startDate"/>
+		<result property="details" column="details"/>
+		<result property="author" column="author"/>
+		<result property="isStarted" column="isStarted"/>
+		<result property="region" column="region"/>
+	</resultMap>
+	
+	<select id="joinedGroup" resultMap="applyBoardResultMap">
+	  SELECT a.bno, a.memberId, a.promise, a.approve, b.groupName, b.category, b.location, b.startDate, b.author
+	  FROM gp_apply a
+	  JOIN gp_board b ON a.bno = b.bno
+	  WHERE a.memberId = #{memberId}
+	</select>
+	
+	<select id="getApplyMember" resultMap="applyBoardResultMap">
+		select * from gp_apply where author=#{memberID}
+	</select>
+	
+	<update id="joinEnd">
+		update gp_apply 
+		set approve= 'Y'
+		where bno = #{bno} and memberId = #{memberId}
+	</update>
+	
+	<update id="countUp">
+		update gp_board
+		set currentParticipants = currentParticipants + 1
+		where bno = #{bno}
+	</update>
+	
+	<delete id="reject">
+	    DELETE FROM gp_apply WHERE bno=#{bno} AND memberId=#{memberId}
+	</delete>
+	
+	
+	<resultMap id="applyBoardResultMap" type="applyVO">
+	  <result property="bno" column="bno" />
+	  <result property="memberId" column="memberId" />
+	  <result property="name" column="name" />
+	  <result property="phone" column="phone" />
+	  <result property="promise" column="promise" />
+	  <result property="approve" column="approve" />
+	  <result property="groupName" column="groupName" />
+	  <result property="category" column="category" />
+	  <result property="location" column="location" />
+	  <result property="startDate" column="startDate" />
+	  <result property="author" column="author" />
+	</resultMap>
+	
+</mapper>

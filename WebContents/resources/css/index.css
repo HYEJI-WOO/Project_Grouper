@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+    .card {
+        height: 300px; /* 카드 박스 높이 */
+        border-radius: 10px; /* 카드 박스 모서리 둥글기 */
+        overflow: hidden; /* 카드 내용 넘치는 부분 감춤 */
+        border: 2px solid #d2d6d5; 
+    }
+
+    .card-body {
+        height: 80%; /* 카드 본문 높이 */
+    }
+
+    .card-title a {
+        font-size: 1.2rem; /* 제목 글씨 크기 */
+        font-weight: bold; /* 제목 글씨 두께 */
+        color: black; /* 제목 글씨 색상 */
+        text-decoration: none; /* 제목 밑줄 제거 */
+    }
+
+    .card-text {
+        font-size: 1rem; /* 내용 글씨 크기 */
+    }
+
+    .card-footer {
+        height: 40%; /* 작성자, 시작일 높이 */
+        display: flex; /* 작성자, 시작일 가운데 정렬 위해 필요 */
+        margin-top: 1rem; /* 원하는 만큼의 간격 설정 */
+        justify-content: center; /* 작성자, 시작일 가운데 정렬 */
+        align-items: center; /* 작성자, 시작일 가운데 정렬 */
+        border-top: 2px solid #d2d6d5; 
+    }
+    
+	.badge {
+	  display: inline-block;
+	  font-size: 12px;
+	  font-weight: bold;
+	  padding: 4px 8px;
+	  border-radius: 4px;
+	}
+	.badge-online {
+	  color: white;
+	  background-color: #ff80c0;
+	}
+	.badge-offline {
+	  color: white;
+	  background-color: #60afff;
+	}
+
+	
+	.list-group-item.active {
+	  background-color: #39d0dd;
+	  color: #fff;
+	  border: 2px solid #39d0dd;
+	}
+	
+	
+	

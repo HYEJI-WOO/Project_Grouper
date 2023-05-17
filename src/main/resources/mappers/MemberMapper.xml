@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jafa.repository.MemberRepository">
+	<insert id="save">
+		insert into gp_member(mno, memberId, password, name, email, phone, year, month, day, address, gender)
+		values(gp_member_seq.nextval, #{memberId}, #{password}, #{name}, #{email}, #{phone}, #{year}, #{month}, #{day}, #{address}, #{gender})
+	</insert>
+	<select id="memberList" resultMap="memberMap">
+		select * from gp_member
+	</select>
+	
+	<select id="existsById" resultType="java.lang.Integer">
+			SELECT COUNT(*) FROM gp_member WHERE memberId = #{id}
+	</select>
+	
+	<update id="updateMemberInfo">
+		update gp_member 
+		set email=#{email}, phone=#{phone}, address=#{address}
+		where memberId = #{memberId}
+	</update>
+
+	
+	<!-- 회원로그인정보 -->
+	<select id="read" resultMap="memberMap">
+		SELECT * FROM gp_member WHERE memberId = #{memberId}
+	</select>
+	<resultMap type="com.jafa.domain.MemberVO" id="memberMap">
+		<result property="mno" column="mno"/>
+		<result property="memberId" column="memberId"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="year" column="year"/>
+		<result property="month" column="month"/>
+		<result property="day" column="day"/>
+		<result property="address" column="address"/>
+		<result property="gender" column="gender"/>
+		<collection property="authList" 
+			column="memberId" 
+			javaType="java.util.ArrayList" 
+			ofType="com.jafa.domain.AuthVO"
+			select="getAuthList"/>
+	</resultMap>
+	<select id="getAuthList" resultType="com.jafa.domain.AuthVO">
+		select * from gp_member_auth where memberId=#{memberId} order by ordinal
+	</select>
+</mapper>
