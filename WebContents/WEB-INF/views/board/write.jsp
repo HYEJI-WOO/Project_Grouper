@@ -105,6 +105,7 @@
 </div>
 
 <%@ include file="../layout/footer.jsp" %>
+
 <script>
 
 	const onlineRadio = document.getElementById('online');
@@ -127,7 +128,6 @@
 	});
 
   
- /* */
 	function validateCapacity() {
 	  var capacityInput = document.getElementById("capacity");
 	  var capacity = capacityInput.value;

@@ -218,27 +218,26 @@
 					</c:otherwise>	
 				</c:choose>	
 			
-			<ul class="pagination justify-content-center">
-			  <c:if test="${p.prev}">
-			    <li class="page-item">
-			      <a class="page-link" href="${p.startPage-1}">이전페이지</a>
-			    </li>
-			  </c:if>
-			  <c:forEach begin="${p.startPage}" end="${p.endPage}" var="pageNum">
-			    <li class="page-item ${cri.page == pageNum ? 'active' : ''}">
-			      <a class="page-link" href="${pageNum}">${pageNum}</a>
-			    </li>
-			  </c:forEach>
-			  <c:if test="${p.next}">
-			    <li class="page-item">
-			      <a class="page-link" href="${p.endPage+1}">다음페이지</a>
-			    </li>
-			  </c:if>
-			</ul>
+				<ul class="pagination justify-content-center">
+				  <c:if test="${p.prev}">
+				    <li class="page-item">
+				      <a class="page-link" href="${p.startPage-1}">이전페이지</a>
+				    </li>
+				  </c:if>
+				  <c:forEach begin="${p.startPage}" end="${p.endPage}" var="pageNum">
+				    <li class="page-item ${cri.page == pageNum ? 'active' : ''}">
+				      <a class="page-link" href="${pageNum}">${pageNum}</a>
+				    </li>
+				  </c:forEach>
+				  <c:if test="${p.next}">
+				    <li class="page-item">
+				      <a class="page-link" href="${p.endPage+1}">다음페이지</a>
+				    </li>
+				  </c:if>
+				</ul>
 			
+			</div>
 		</div>
-	</div>
-	
 	</div>	
 </div> 
 </div> 

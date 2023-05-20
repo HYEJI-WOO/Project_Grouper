@@ -13,7 +13,6 @@ public class Criteria {
 	private String category;
 	private String location;
 	private String region;
-	// private String type;
 	private String searchType;
 	private String keyword;
 	

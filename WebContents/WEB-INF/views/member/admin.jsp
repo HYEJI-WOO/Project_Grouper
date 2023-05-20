@@ -31,10 +31,9 @@
 					</c:forEach>
 					</select>
 				</td>
-		</tr>
-		</c:if>
+			</tr>
+			</c:if>
 		</c:forEach>
-		
 	</table>
 	<button>전송</button>
 	</form>

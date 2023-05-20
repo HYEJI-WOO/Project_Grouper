@@ -70,8 +70,6 @@ public class BoardController {
         applyVO.setAuthor(author);
         boardService.apply(applyVO);
         
-        
-        
 		return ResponseEntity.ok("success");
 	}
 	
@@ -135,10 +133,10 @@ public class BoardController {
 		
 	}
 	
-	
 	@PostMapping("/delete/{bno}")
 	public String delete(@PathVariable int bno) {
 		boardService.delete(bno);
+		
 		return "redirect:/";
 	}
 	
@@ -146,6 +144,7 @@ public class BoardController {
 	public String updateForm(Long bno, Model model) {
 	    BoardVO vo = boardService.detail(bno);
 	    model.addAttribute("b", vo);
+	    
 	    return "board/updateForm";
 	}
 	
@@ -154,11 +153,9 @@ public class BoardController {
 	    boardService.update(vo);
 	    rttr.addAttribute("bno", vo.getBno());
 	    rttr.addAttribute("page", page);
+	    
 	    return "redirect:/board/detail";
 	}
-
-
-
 	
 	@PostMapping("/replyWrite")
 	public ResponseEntity<String> replyWrite(@RequestParam Long bno, 
@@ -180,33 +177,23 @@ public class BoardController {
 	    
 	    return "success";
 	}
-
 	
 	@GetMapping("/myInfo")
 	@ResponseBody
 	public Object myInfo(Authentication auth, @RequestParam("bno") Long bno, @RequestParam("memberId") String memberId) {
-	    // 첫번째 SQL문 실행
-		
-		System.out.println("-dfefefzzzzz");
-		System.out.println(bno);
-		System.out.println(memberId);
-		
-		
 		ApplyVO applyVO = new ApplyVO();
 			applyVO.setBno(bno);
 			applyVO.setMemberId(memberId);
 		
 	    int count = boardService.checkDuplicateApply(applyVO);
-	    System.out.println("-ldkfokeofe");
-	    System.out.println(count);
 	    
 	    if (count > 0) {
 	        return "duplicated";
 	    } else {
-	        // 두번째 SQL문 실행
 	        MemberDetail principal = (MemberDetail) auth.getPrincipal();
 	        MemberVO memberVO = principal.getMemberVO();
 	        return memberVO;
 	    }
-	}	
+	}
+	
 }

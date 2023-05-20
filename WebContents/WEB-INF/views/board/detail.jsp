@@ -388,7 +388,7 @@ $(function() {
 $(function() {
 	
 	var csrfToken = $("meta[name='_csrf']").attr("content");
-	  var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 	  // 제출 버튼 클릭 시
 	  $('#submit-button').on('click', function() {
 	    // 폼 데이터 가져오기

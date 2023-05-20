@@ -20,7 +20,8 @@ public class HomeController {
 	@Autowired
 	BoardService boardService;
 	
-	@GetMapping(value={"/", "/category={category}", "/location={location}", "/region={region}", "/location={location}/category={category}/region={region}"})
+	@GetMapping(value={"/", "/category={category}", "/location={location}", "/region={region}", 
+			                      "/location={location}/category={category}/region={region}"})
 	public String home(@ModelAttribute("cri") Criteria criteria, Model model, 
 	                   @PathVariable(required = false) String category, 
 	                   @PathVariable(required = false) String location,
@@ -34,8 +35,5 @@ public class HomeController {
 	    model.addAttribute("p", pagination);
 	    return "index";
 	}
-
-
-
 
 }

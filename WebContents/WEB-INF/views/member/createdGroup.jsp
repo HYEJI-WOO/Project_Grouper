@@ -149,7 +149,7 @@
 	</div>
 </div>
 
-<%@ include file="../layout/footer.jsp" %>
+<%@ include file="../layout/footer2.jsp" %>
 
 <script>
   function toggleTable(btn) {
